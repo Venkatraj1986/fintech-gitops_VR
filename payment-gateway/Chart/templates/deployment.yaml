@@ -1,22 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.Name }}
-  labels:
-    app: {{ .Chart.Name }}
+  name: payment-api
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}
+      app: payment-api
   template:
     metadata:
       labels:
-        app: {{ .Chart.Name }}
+        app: payment-api
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        - name: payment-api
+          image: nginx
           ports:
             - containerPort: 80
 
